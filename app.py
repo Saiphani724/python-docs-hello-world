@@ -3,11 +3,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Welcome, you are using KeepHerSafe Services... :)"
+	returnText = "Welcome, you are using KeepHerSafe Services... :)\n" + \
+		"Sample Request Url: " + \
+	"\"http://keephersafe.azurewebsites.net/isEmergency/currentheartrate=92.32&heartratemean=85&heartratestdDev=20&scaleOfElimination=1\"" + \
+	"\n\n" 
+	return returnText
 
 
 #sample request
-#http://127.0.0.1:5000/isEmergency/currentheartrate=122.32&heartratemean=232.32&heartratestdDev=121.2&scaleOfElimination=1
+#http://127.0.0.1:5000/isEmergency/currentheartrate=92.32&heartratemean=85&heartratestdDev=20&scaleOfElimination=1
 @app.route("/isEmergency/currentheartrate=<hrv>&heartratemean=<mean>&heartratestdDev=<stdDev>&scaleOfElimination=<scaleOfElimination>")
 def checkCondition(hrv,mean, stdDev, scaleOfElimination):
 	hrv = float(hrv)
